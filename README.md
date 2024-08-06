@@ -137,6 +137,9 @@ ndk-build ${NDK_ATTACHED}
 提示`error: instruction requires: dotprod`缺少点集支持，目前还没找到什么方法，我改用Android Studio集成编译可以正常编译成功，详细见demo
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8b13d05a8cab4d5d94f18a1270eb4a70~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723458358&x-orig-sign=7WaK8LYJCIE08Bmgi6ZKgH9hWEQ%3D)
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d6b2f7287d034c468287f409c4a81ea8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723002265&x-orig-sign=sdq%2BIbXcYnSU8Q9lH8Q6mZAoCrc%3D)
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e7d07c0d650b4360b4da1714226baaa8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723002285&x-orig-sign=nsVaM4GHFc6U1dYbcRatruqsMUk%3D)
+
 添加`libyuvBuild`模块依赖，然后build出APK安装包，从APK中提取编译好的libyuv so库
 当然你也可以直接在`libyuvBuild`模块里面添加libyuv转换图像相关native方法去使用。
 
@@ -530,8 +533,7 @@ imageAnalysis.setAnalyzer(singleThreadPool) { imageProxy ->
 ```
 关于YUV格式不清楚的可以自己参考其他文章了解，对于其他格式的YUV数据获取自行实现。
 2. 预览和转换效果
-
-![GIF 2024-8-5 17-48-35.gif](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6d0e9013f38f46c69baa6e10ee434ffe~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723458358&x-orig-sign=vYRS0pg25ErsdYbiSsgFLg3d5%2Fo%3D)
+![GIF 2024-8-5 17-48-35](https://github.com/user-attachments/assets/b129e5a1-e7ad-404a-826e-595009794118)
 
 ### 最后附上Demo项目地址
 https://github.com/Roc-egg/libyuv-android-demo
