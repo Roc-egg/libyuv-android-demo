@@ -133,7 +133,8 @@ ndk-build ${NDK_ATTACHED}
 ### 注意使用Ubuntu编译最新版本libyuv需要注意
 上面方法在编译libyuv 1888版本时候正常编译出so库，但是最新版本（1892）编译会显示如下：
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8814bb55d9a54a5895b42ed270c3e144~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=Jz%2BN24oo6s23tsTpACaj4H1j8Y4%3D)
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8814bb55d9a54a5895b42ed270c3e144~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723527179&x-orig-sign=GbPawTVHLoq8uNmrdfxuCTYUgk8%3D)
+
 提示`error: instruction requires: dotprod`缺少点集支持，目前还没找到什么方法，我改用Android Studio集成编译可以正常编译成功，详细见demo
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8b13d05a8cab4d5d94f18a1270eb4a70~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=eTOZIA8b9YPdXc9S90wKyJTUkRg%3D)
@@ -141,6 +142,7 @@ ndk-build ${NDK_ATTACHED}
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d6b2f7287d034c468287f409c4a81ea8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=KaKfNmkLhBrDGM32KIDWwTRTrko%3D)
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e7d07c0d650b4360b4da1714226baaa8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=wVC4loMiVwQXAAY5Zs3zV4eOeC0%3D)
+
 添加`libyuvBuild`模块依赖，然后`make`或者`gradle build`出aar包，从aar中提取编译好的`libyuv.so`库
 当然你也可以直接在`libyuvBuild`模块里面添加libyuv转换图像相关native方法去使用。
 
