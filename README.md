@@ -79,7 +79,7 @@ APP_STL := c++_static
 
 4. 修改libyuv文件夹里面的`Android.mk`文件
 
-   - 因为libyuv直接编译会提示需要依赖libjpeg库
+    - 因为libyuv直接编译会提示需要依赖libjpeg库
      ![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1fb9c9b8eefd4e1cbb61a8a65d4d78d4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=744&h=678&s=86580&e=png&b=300a25)
    - 我们不需要使用直接修改`Android.mk`文件将jpeg相关注释或删
      ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b9ddbaca86ef4a0c82339ef7a1e4625e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=974&h=995&s=227126&e=png&b=faf9f9)
@@ -133,20 +133,21 @@ ndk-build ${NDK_ATTACHED}
 ### 注意使用Ubuntu编译最新版本libyuv需要注意
 上面方法在编译libyuv 1888版本时候正常编译出so库，但是最新版本（1892）编译会显示如下：
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8814bb55d9a54a5895b42ed270c3e144~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723458358&x-orig-sign=jWoKa8aQ0o0vWHZmpQrFGr4BJjk%3D)
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8814bb55d9a54a5895b42ed270c3e144~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=Jz%2BN24oo6s23tsTpACaj4H1j8Y4%3D)
 提示`error: instruction requires: dotprod`缺少点集支持，目前还没找到什么方法，我改用Android Studio集成编译可以正常编译成功，详细见demo
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8b13d05a8cab4d5d94f18a1270eb4a70~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723458358&x-orig-sign=7WaK8LYJCIE08Bmgi6ZKgH9hWEQ%3D)
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d6b2f7287d034c468287f409c4a81ea8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723002265&x-orig-sign=sdq%2BIbXcYnSU8Q9lH8Q6mZAoCrc%3D)
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e7d07c0d650b4360b4da1714226baaa8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723002285&x-orig-sign=nsVaM4GHFc6U1dYbcRatruqsMUk%3D)
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8b13d05a8cab4d5d94f18a1270eb4a70~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=eTOZIA8b9YPdXc9S90wKyJTUkRg%3D)
 
-添加`libyuvBuild`模块依赖，然后build出APK安装包，从APK中提取编译好的libyuv so库
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d6b2f7287d034c468287f409c4a81ea8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=KaKfNmkLhBrDGM32KIDWwTRTrko%3D)
+
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e7d07c0d650b4360b4da1714226baaa8~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=wVC4loMiVwQXAAY5Zs3zV4eOeC0%3D)
+添加`libyuvBuild`模块依赖，然后`make`或者`gradle build`出aar包，从aar中提取编译好的`libyuv.so`库
 当然你也可以直接在`libyuvBuild`模块里面添加libyuv转换图像相关native方法去使用。
 
 ## 使用编译好的libyuv
 主要演示从摄像头获取的数据使用我们编译好的libyuv库进行格式转换和旋转翻转处理
 ### libyuv导入到项目中
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/87f37c179ca5497db7d3976da95dd153~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723458358&x-orig-sign=z2PEcLU6SBnEked30%2B2Z%2FvUH%2F5s%3D)
+![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/87f37c179ca5497db7d3976da95dd153~tplv-73owjymdk6-jj-mark:0:0:0:0:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiNDA5MDYzNzU5MDk5OTI0NSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1723520853&x-orig-sign=jRo9ZGMTYTnjR4qmdxO396Apv%2F8%3D)
 1. 修改`CMakeLists.txt文件`
 ```c++
 # For more information about using CMake with Android Studio, read the
